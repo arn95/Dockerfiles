@@ -1,0 +1,25 @@
+FROM archlinux/base
+
+RUN pacman -Sy --noconfirm \
+    pkgfile \
+    gcc \
+    make \
+    util-linux \
+    module-init-tools \
+    e2fsprogs \
+    procps \
+    grep \
+    bc \
+    awk \
+    bison \
+    flex \
+    diffutils \
+    inetutils
+
+WORKDIR /home/linux
+
+RUN curl https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.20.14.tar.xz > linux-4.20.14.tar.xz
+
+RUN tar -xf linux-4.20.14.tar.xz
+
+CMD bash
